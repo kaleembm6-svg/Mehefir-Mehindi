@@ -370,6 +370,27 @@ nav.scrolled { border-bottom-color: var(--border); padding: 14px 48px; }
   width: 100%; height: 100%;
   background: linear-gradient(135deg, #e0cfc0 0%, #c9a98a 50%, #b5714a 100%);
 }
+.gallery-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(42,15,5,0.82) 0%, transparent 100%);
+  padding: 32px 18px 16px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.gallery-item:hover .gallery-caption { opacity: 1; }
+.gallery-caption span {
+  display: block;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(255,255,255,0.75);
+}
+.gallery-caption strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 300; font-style: italic;
+  color: #fff; margin-top: 3px;
+}
 
 /* ══════════════════════════════
    ABOUT
@@ -436,6 +457,12 @@ nav.scrolled { border-bottom-color: var(--border); padding: 14px 48px; }
 }
 .btn-order svg { width: 16px; flex-shrink: 0; }
 .btn-order:hover { background: var(--terracotta); border-color: var(--terracotta); }
+.location-note {
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-top: 10px; text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.location-note svg { width: 11px; opacity: 0.6; }
 
 /* ══════════════════════════════
    FAQ
@@ -502,6 +529,13 @@ nav.scrolled { border-bottom-color: var(--border); padding: 14px 48px; }
 }
 .btn-send:hover { background: var(--terracotta); }
 .btn-send svg { width: 16px; }
+.contact-location-note {
+  font-size: 11px; letter-spacing: 0.1em;
+  color: var(--text-light); margin-top: 10px;
+  text-align: center; display: flex;
+  align-items: center; justify-content: center; gap: 5px;
+}
+.contact-location-note svg { width: 12px; color: var(--terracotta); }
 
 /* ══════════════════════════════
    INSTAGRAM
@@ -817,12 +851,12 @@ footer {
     <h2 class="section-title">The Art</h2>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item"><img src="mehendi1.jpg" alt="Bridal Mehendi design by Mehefir, Nellore" onerror="this.outerHTML='<div class=ph></div>'"></div>
-    <div class="gallery-item"><img src="mehendi2.jpg" alt="Arabic henna pattern by Mehefir" onerror="this.outerHTML='<div class=ph></div>'"></div>
-    <div class="gallery-item"><img src="mehendi3.jpg" alt="Intricate mehendi design for wedding" onerror="this.outerHTML='<div class=ph></div>'"></div>
-    <div class="gallery-item"><img src="mehendi4.jpg" alt="Traditional bridal henna by Mehefir artist" onerror="this.outerHTML='<div class=ph></div>'"></div>
-    <div class="gallery-item"><img src="mehendi5.jpg" alt="Modern mehendi design for engagement ceremony" onerror="this.outerHTML='<div class=ph></div>'"></div>
-    <div class="gallery-item"><img src="mehendi6.jpg" alt="Full hand mehendi design Nellore" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi1.jpg" alt="Bridal Mehendi design by Mehefir, Nellore" onerror="this.outerHTML='<div class=ph></div>'"><div class="gallery-caption"><span>Signature Style</span><strong>Bridal Mehendi</strong></div></div>
+    <div class="gallery-item"><img src="mehendi2.jpg" alt="Arabic henna pattern by Mehefir" onerror="this.outerHTML='<div class=ph></div>'"><div class="gallery-caption"><span>Contemporary</span><strong>Arabic Design</strong></div></div>
+    <div class="gallery-item"><img src="mehendi3.jpg" alt="Intricate mehendi design for wedding" onerror="this.outerHTML='<div class=ph></div>'"><div class="gallery-caption"><span>Traditional</span><strong>Full Hand Mehendi</strong></div></div>
+    <div class="gallery-item"><img src="mehendi4.jpg" alt="Traditional bridal henna by Mehefir artist" onerror="this.outerHTML='<div class=ph></div>'"><div class="gallery-caption"><span>Bridal</span><strong>Rajasthani Style</strong></div></div>
+    <div class="gallery-item"><img src="mehendi5.jpg" alt="Modern mehendi design for engagement ceremony" onerror="this.outerHTML='<div class=ph></div>'"><div class="gallery-caption"><span>Fusion</span><strong>Modern Minimalist</strong></div></div>
+    <div class="gallery-item"><img src="mehendi6.jpg" alt="Full hand mehendi design Nellore" onerror="this.outerHTML='<div class=ph></div>'"><div class="gallery-caption"><span>Festive</span><strong>Party Mehendi</strong></div></div>
   </div>
 </section>
 
@@ -848,8 +882,8 @@ footer {
 <!-- ══ PRODUCTS ══ -->
 <section id="products" class="products-section">
   <span class="section-label">Shop</span>
-  <h2 class="section-title" style="color:var(--cream)">Products &amp; Services</h2>
-  <p class="products-intro">Premium quality mehendi products and services, crafted with care for every occasion.</p>
+  <h2 class="section-title" style="color:var(--cream)">Mehendi Products &amp; Bridal Services in Nellore</h2>
+  <p class="products-intro">Premium quality mehendi products and services for weddings, engagements &amp; events across Nellore and Andhra Pradesh.</p>
   <div class="products-grid">
     <div class="product-card">
       <h3>Mehendi Cone</h3>
@@ -859,6 +893,7 @@ footer {
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
         Order via WhatsApp
       </button>
+      <p class="location-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Based in Nellore · Serving Andhra Pradesh</p>
     </div>
     <div class="product-card">
       <h3>Mehendi Kit</h3>
@@ -868,6 +903,7 @@ footer {
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
         Order via WhatsApp
       </button>
+      <p class="location-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Based in Nellore · Serving Andhra Pradesh</p>
     </div>
     <div class="product-card">
       <h3>Bridal Mehendi</h3>
@@ -877,6 +913,7 @@ footer {
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
         Enquire via WhatsApp
       </button>
+      <p class="location-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Based in Nellore · Serving Andhra Pradesh</p>
     </div>
     <div class="product-card">
       <h3>Party Package</h3>
@@ -886,6 +923,7 @@ footer {
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
         Enquire via WhatsApp
       </button>
+      <p class="location-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Based in Nellore · Serving Andhra Pradesh</p>
     </div>
   </div>
 </section>
@@ -920,6 +958,10 @@ footer {
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">How far in advance should I book?<span class="faq-icon">+</span></button>
         <div class="faq-answer"><p>For bridal bookings, we recommend enquiring at least 3–6 months in advance, especially during peak wedding season. For smaller occasions, 2–4 weeks notice is usually sufficient.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Do you travel to nearby towns like Kavali, Gudur, or Ongole?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Yes! We're happy to travel to nearby towns including Kavali, Gudur, Sullurpeta, Venkatagiri, Ongole, and other locations across Nellore district and greater Andhra Pradesh. A small travel charge may apply depending on distance — please mention your location when you enquire and we'll give you a clear quote.</p></div>
       </div>
     </div>
   </div>
@@ -966,8 +1008,12 @@ footer {
     </div>
     <button class="btn-send" onclick="sendMsg()">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-      Send via WhatsApp
+      Send Details via WhatsApp
     </button>
+    <p class="contact-location-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      Based in Nellore &nbsp;·&nbsp; Serving Andhra Pradesh
+    </p>
   </div>
 </section>
 
