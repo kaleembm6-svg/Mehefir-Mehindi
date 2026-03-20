@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mehefir Art</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #faf6f1;
+  --warm-white: #fdfbf8;
+  --sand: #e8ddd0;
+  --terracotta: #b5714a;
+  --deep-brown: #3a1f0d;
+  --mid-brown: #7a4928;
+  --text: #2c1a0e;
+  --text-light: #7a6458;
+  --border: #ddd3c5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  font-weight: 300;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 48px;
+  background: rgba(250,246,241,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, padding 0.3s;
+}
+nav.scrolled { border-bottom-color: var(--border); padding: 16px 48px; }
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--deep-brown); text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 12px; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-light);
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--terracotta); }
+
+.nav-cta {
+  font-size: 12px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--deep-brown);
+  text-decoration: none; border-bottom: 1px solid var(--terracotta);
+  padding-bottom: 2px; transition: color 0.2s;
+}
+.nav-cta:hover { color: var(--terracotta); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none;
+}
+.hamburger span { width: 22px; height: 1px; background: var(--deep-brown); display: block; }
+
+/* ── HERO ── */
+.hero {
+  height: 100vh; position: relative;
+  display: flex; align-items: flex-end; overflow: hidden;
+}
+.hero-image {
+  position: absolute; inset: 0;
+  background: url('logo.png') center/cover no-repeat;
+  transform: scale(1.05);
+  animation: heroZoom 8s ease forwards;
+}
+@keyframes heroZoom {
+  from { transform: scale(1.05); }
+  to   { transform: scale(1); }
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(42,15,5,0.75) 0%, rgba(42,15,5,0.1) 55%, transparent 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 64px 72px;
+  animation: fadeUp 1.2s 0.4s both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content p {
+  font-size: 11px; font-weight: 400; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 14px;
+}
+.hero-content h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 6vw, 76px); font-weight: 300; font-style: italic;
+  color: #fff; line-height: 1.1; max-width: 640px;
+}
+.hero-scroll {
+  position: absolute; bottom: 36px; right: 64px; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+}
+.hero-scroll::after {
+  content: ''; width: 1px; height: 48px;
+  background: rgba(255,255,255,0.35);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0%,100% { opacity: 0.35; } 50% { opacity: 0.8; }
+}
+
+/* ── SECTION ── */
+.section { padding: 100px 64px; }
+
+.section-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--terracotta);
+  display: block; margin-bottom: 20px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 54px); font-weight: 300; font-style: italic;
+  color: var(--deep-brown); line-height: 1.2;
+}
+
+/* ── GALLERY ── */
+.gallery-section { background: var(--warm-white); padding: 100px 0; overflow: hidden; }
+.gallery-header  { padding: 0 64px; margin-bottom: 56px; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+.gallery-item {
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--sand);
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.7s ease; display: block;
+}
+.gallery-item:hover img { transform: scale(1.05); }
+
+/* Placeholder */
+.gallery-item .ph {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #e0cfc0 0%, #c9a98a 50%, #b5714a 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ── ABOUT ── */
+.about-wrap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+  max-width: 1200px; margin: 0 auto;
+}
+.about-img { position: relative; }
+.about-img::before {
+  content: ''; position: absolute;
+  top: -24px; left: -24px; right: 24px; bottom: 24px;
+  border: 1px solid var(--border); border-radius: 2px;
+}
+.about-img img {
+  width: 100%; aspect-ratio: 4/5; object-fit: cover;
+  border-radius: 2px; display: block; position: relative; z-index: 1;
+}
+.about-img .ph-about {
+  width: 100%; aspect-ratio: 4/5;
+  background: linear-gradient(160deg, #e8ddd0 0%, #c9a98a 100%);
+  border-radius: 2px; position: relative; z-index: 1;
+}
+.about-text blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 300; font-style: italic;
+  color: var(--terracotta); border-left: 2px solid var(--terracotta);
+  padding-left: 24px; margin: 32px 0; line-height: 1.5;
+}
+.about-text p { font-size: 15px; line-height: 1.9; color: var(--text-light); margin-bottom: 18px; }
+.about-sig { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-style: italic; color: var(--deep-brown); margin-top: 28px; }
+
+/* ── PRODUCTS ── */
+.products-section { background: var(--deep-brown); padding: 100px 64px; }
+.products-section .section-label { color: var(--sand); }
+.products-intro { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 480px; margin-top: 16px; line-height: 1.7; }
+
+.products-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2px; margin-top: 56px;
+}
+.product-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  padding: 40px 36px; transition: background 0.3s;
+}
+.product-card:hover { background: rgba(255,255,255,0.09); }
+.product-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--cream); margin-bottom: 8px; }
+.product-card .desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 24px; }
+.product-price { font-size: 22px; font-family: 'Cormorant Garamond', serif; color: var(--terracotta); margin-bottom: 24px; }
+
+.btn-order {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: none; border: 1px solid rgba(255,255,255,0.2);
+  color: var(--cream); padding: 12px 24px;
+  font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.25s, border-color 0.25s;
+}
+.btn-order svg { width: 16px; flex-shrink: 0; }
+.btn-order:hover { background: var(--terracotta); border-color: var(--terracotta); }
+
+/* ── FAQ ── */
+.faq-inner { max-width: 800px; margin: 0 auto; }
+.faq-list  { margin-top: 56px; border-top: 1px solid var(--border); }
+.faq-item  { border-bottom: 1px solid var(--border); }
+.faq-question {
+  width: 100%; background: none; border: none;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 0; font-family: 'Jost', sans-serif; font-size: 15px;
+  font-weight: 400; color: var(--deep-brown); cursor: pointer; text-align: left; gap: 16px;
+}
+.faq-icon {
+  width: 20px; height: 20px; flex-shrink: 0;
+  border: 1px solid var(--border); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: var(--terracotta); transition: transform 0.3s, background 0.3s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: var(--terracotta); border-color: var(--terracotta); color: white; }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-answer p { font-size: 14px; line-height: 1.9; color: var(--text-light); padding-bottom: 24px; }
+
+/* ── CONTACT ── */
+.contact-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; }
+.contact-img { position: relative; min-height: 400px; overflow: hidden; }
+.contact-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.contact-img .ph-contact { position: absolute; inset: 0; background: linear-gradient(135deg, #c9a98a, #7a4928); }
+
+.contact-form-wrap {
+  background: var(--warm-white); padding: 80px 64px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; }
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%; background: none; border: none;
+  border-bottom: 1px solid var(--border); padding: 10px 0;
+  font-family: 'Jost', sans-serif; font-size: 14px; color: var(--text);
+  outline: none; transition: border-color 0.2s; appearance: none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-bottom-color: var(--terracotta); }
+.form-group textarea { resize: none; height: 80px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.btn-send {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--deep-brown); color: var(--cream); border: none;
+  padding: 16px 36px; font-family: 'Jost', sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  cursor: pointer; margin-top: 12px; transition: background 0.25s;
+}
+.btn-send:hover { background: var(--terracotta); }
+.btn-send svg { width: 16px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep-brown); padding: 48px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); }
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--sand); }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+
+  .section { padding: 72px 24px; }
+  .hero-content { padding: 0 24px 56px; }
+  .hero-scroll { right: 24px; }
+
+  .gallery-header { padding: 0 24px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+
+  .about-wrap { grid-template-columns: 1fr; gap: 40px; }
+  .about-img::before { display: none; }
+
+  .products-section { padding: 72px 24px; }
+  .products-grid { grid-template-columns: 1fr; gap: 12px; }
+
+  .contact-section { grid-template-columns: 1fr; }
+  .contact-img { min-height: 300px; }
+  .contact-form-wrap { padding: 56px 24px; }
+  .form-row { grid-template-columns: 1fr; }
+
+  footer { flex-direction: column; gap: 24px; padding: 40px 24px; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+
+  .instagram-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+
+/* ── INSTAGRAM ── */
+.instagram-section {
+  padding: 100px 64px;
+  background: var(--warm-white);
+  text-align: center;
+}
+.instagram-section .section-title { margin-bottom: 12px; }
+.instagram-handle {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; letter-spacing: 0.1em; color: var(--text-light);
+  text-decoration: none; margin-bottom: 56px;
+  transition: color 0.2s;
+}
+.instagram-handle:hover { color: var(--terracotta); }
+.instagram-handle svg { width: 16px; }
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  max-width: 1000px;
+  margin: 0 auto 48px;
+}
+.instagram-item {
+  aspect-ratio: 1/1;
+  background: var(--sand);
+  overflow: hidden;
+  position: relative;
+}
+.instagram-item .ph-insta {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #e0cfc0, #b5714a);
+  display: flex; align-items: center; justify-content: center;
+}
+.instagram-item .ph-insta svg { width: 28px; opacity: 0.3; }
+.instagram-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s ease;
+}
+.instagram-item:hover img { transform: scale(1.06); }
+.instagram-item .insta-overlay {
+  position: absolute; inset: 0;
+  background: rgba(42,15,5,0.45);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s;
+}
+.instagram-item:hover .insta-overlay { opacity: 1; }
+.instagram-item .insta-overlay svg { width: 28px; color: white; }
+
+.btn-instagram {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid var(--deep-brown); color: var(--deep-brown);
+  padding: 14px 32px; background: none;
+  font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  text-decoration: none; transition: background 0.25s, color 0.25s;
+  cursor: pointer;
+}
+.btn-instagram:hover { background: var(--deep-brown); color: var(--cream); }
+.btn-instagram svg { width: 16px; }
+
+/* ── TESTIMONIALS ── */
+.testimonials-section {
+  padding: 100px 64px;
+  background: var(--cream);
+  text-align: center;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 56px auto 0;
+  text-align: left;
+}
+.testimonial-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  padding: 36px 32px;
+  position: relative;
+}
+.testimonial-card::before {
+  content: '"';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px; font-weight: 300;
+  color: var(--terracotta); opacity: 0.25;
+  position: absolute; top: 8px; left: 24px;
+  line-height: 1;
+}
+.testimonial-stars {
+  display: flex; gap: 4px; margin-bottom: 16px;
+  color: var(--terracotta); font-size: 13px;
+}
+.testimonial-card p {
+  font-size: 15px; line-height: 1.8;
+  color: var(--text-light); margin-bottom: 24px;
+  font-style: italic;
+}
+.testimonial-author {
+  display: flex; align-items: center; gap: 12px;
+}
+.author-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--sand); overflow: hidden; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; color: var(--mid-brown); font-weight: 600;
+}
+.author-name {
+  font-size: 13px; font-weight: 500; color: var(--deep-brown);
+  letter-spacing: 0.05em;
+}
+.author-event {
+  font-size: 11px; color: var(--text-light);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px;
+}
+
+/* ── WHATSAPP FLOAT ── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 32px; right: 32px;
+  z-index: 999;
+  width: 56px; height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  text-decoration: none;
+  transition: transform 0.25s, box-shadow 0.25s;
+  animation: waPulse 2.5s ease-in-out infinite;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+}
+.whatsapp-float svg { width: 28px; color: white; }
+@keyframes waPulse {
+  0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+  50%      { box-shadow: 0 4px 32px rgba(37,211,102,0.65); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">Mehefir Art</a>
+  <ul class="nav-links">
+    <li><a href="#gallery">The Art</a></li>
+    <li><a href="#about">The Artist</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-image"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p>Mehendi · Art · Tradition</p>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery-section">
+  <div class="gallery-header">
+    <span class="section-label">Portfolio</span>
+    <h2 class="section-title">The Art</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="mehendi1.jpg" alt="Mehendi 1" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi2.jpg" alt="Mehendi 2" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi3.jpg" alt="Mehendi 3" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi4.jpg" alt="Mehendi 4" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi5.jpg" alt="Mehendi 5" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi6.jpg" alt="Mehendi 6" onerror="this.outerHTML='<div class=ph></div>'"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="about-wrap">
+    <div class="about-img">
+      <img src="artist.jpg" alt="The Artist" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="ph-about" style="display:none"></div>
+    </div>
+    <div class="about-text">
+      <span class="section-label">The Artist</span>
+      <h2 class="section-title">Craft rooted in culture,<br>refined by passion.</h2>
+      <blockquote>"Each design is a conversation between tradition and the moment we share."</blockquote>
+      <p>I grew up with an innate love for art, and the moment I first picked up a henna cone, I knew this was my language. What began as curious doodles quickly grew into a lifelong passion — and eventually, a craft I share with the world.</p>
+      <p>I bring a Fine Art approach to mehendi, blending timeless tradition with a refined, personal aesthetic. Every design is bespoke — shaped by your story, your occasion, your vision.</p>
+      <p>To me, the beauty of mehendi lies not only in the intricate patterns, but in the experience itself — honouring the moment, creating a memory that lasts long after the stain fades.</p>
+      <div class="about-sig">— Your Artist</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="products-section">
+  <span class="section-label">Shop</span>
+  <h2 class="section-title" style="color:var(--cream)">Products &amp; Services</h2>
+  <p class="products-intro">Premium quality mehendi products and services, crafted with care for every occasion.</p>
+
+  <div class="products-grid">
+    <div class="product-card">
+      <h3>Mehendi Cone</h3>
+      <p class="desc">Fresh, natural henna paste in a ready-to-use cone. Smooth application, dark and long-lasting stain.</p>
+      <div class="product-price">₹30</div>
+      <button class="btn-order" onclick="order('Mehendi Cone – ₹30')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        Order via WhatsApp
+      </button>
+    </div>
+    <div class="product-card">
+      <h3>Mehendi Kit</h3>
+      <p class="desc">Complete starter kit with cones, stencils, and aftercare oil. Everything for stunning designs at home.</p>
+      <div class="product-price">₹150</div>
+      <button class="btn-order" onclick="order('Mehendi Kit – ₹150')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        Order via WhatsApp
+      </button>
+    </div>
+    <div class="product-card">
+      <h3>Bridal Mehendi</h3>
+      <p class="desc">Full bridal application for hands and feet. Intricate, bespoke patterns for your most special day.</p>
+      <div class="product-price">₹2,500+</div>
+      <button class="btn-order" onclick="order('Bridal Mehendi Service')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        Enquire via WhatsApp
+      </button>
+    </div>
+    <div class="product-card">
+      <h3>Party Package</h3>
+      <p class="desc">Group mehendi for functions and gatherings. Min. 10 guests. Customisable for every occasion.</p>
+      <div class="product-price">₹800 / guest</div>
+      <button class="btn-order" onclick="order('Party Mehendi Package')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        Enquire via WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="faq-inner">
+    <span class="section-label">Questions</span>
+    <h2 class="section-title">Frequently Asked</h2>
+    <p style="color:var(--text-light);font-size:14px;margin-top:16px;line-height:1.8">Everything you need to know before your appointment.</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How long does mehendi last?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Mehendi typically lasts 5–14 days depending on your skin type, placement, and aftercare. Palms stain the darkest and last longest. Feet and arms may fade sooner.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What ingredients are in the henna paste? Is it safe?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>We use 100% natural, organic henna powder mixed with high-quality essential oils such as eucalyptus or lavender. Our paste is completely free from harmful chemicals or PPD. Your skin's safety is our top priority.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you do bridal mehendi?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Yes — bridal mehendi is our speciality! A full application covering hands, arms, and feet takes 3–6 hours. We recommend scheduling 2–3 days before your ceremony so the stain reaches its richest colour by your big day.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I customise my design?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Absolutely. Every design is bespoke. We can incorporate your partner's name, meaningful motifs, or cultural symbols important to your family. Share your ideas and we'll craft something uniquely yours.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I get the darkest stain?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Keep the paste on for at least 6–8 hours (overnight is best). Once removed, avoid washing the area for 24 hours. Apply coconut oil regularly and keep the area warm — heat is the secret to a deep, rich stain.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How far in advance should I book?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>For bridal bookings, we recommend enquiring at least 3–6 months in advance, especially during peak wedding season. For smaller occasions, 2–4 weeks notice is usually sufficient.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-img">
+    <img src="mehendi3.jpg" alt="Mehendi Art" onerror="this.style.display='none'">
+    <div class="ph-contact"></div>
+  </div>
+  <div class="contact-form-wrap">
+    <span class="section-label">Let's Work Together</span>
+    <h2 class="section-title" style="margin-bottom:32px">Get in Touch</h2>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Name *</label>
+        <input type="text" id="c-name" placeholder="Your full name">
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" id="c-phone" placeholder="+91 00000 00000">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Occasion *</label>
+      <select id="c-occasion">
+        <option value="">Select an occasion</option>
+        <option>Wedding – Bridal Only</option>
+        <option>Wedding – Bridal + Party</option>
+        <option>Engagement</option>
+        <option>Baby Shower</option>
+        <option>Festival / Eid</option>
+        <option>Other Special Occasion</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Location</label>
+      <input type="text" id="c-location" placeholder="City / venue">
+    </div>
+    <div class="form-group">
+      <label>Message *</label>
+      <textarea id="c-msg" placeholder="Tell me about your vision, your date, any design ideas…"></textarea>
+    </div>
+
+    <button class="btn-send" onclick="sendMsg()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      Send via WhatsApp
+    </button>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="instagram" class="instagram-section">
+  <span class="section-label">Stay Connected</span>
+  <h2 class="section-title">Follow us on Instagram</h2>
+  <a href="https://instagram.com/Mehefir" target="_blank" class="instagram-handle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    @Mehefir
+  </a>
+
+  <div class="instagram-grid">
+    <a href="https://instagram.com/Mehefir" target="_blank" class="instagram-item">
+      <img src="insta1.jpg" alt="Instagram post" onerror="this.outerHTML='<div class=ph-insta><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'white\' stroke-width=\'1.5\'><rect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'5\'/><circle cx=\'12\' cy=\'12\' r=\'5\'/></svg></div>'">
+      <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div>
+    </a>
+    <a href="https://instagram.com/Mehefir" target="_blank" class="instagram-item">
+      <img src="insta2.jpg" alt="Instagram post" onerror="this.outerHTML='<div class=ph-insta></div>'">
+      <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div>
+    </a>
+    <a href="https://instagram.com/Mehefir" target="_blank" class="instagram-item">
+      <img src="insta3.jpg" alt="Instagram post" onerror="this.outerHTML='<div class=ph-insta></div>'">
+      <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div>
+    </a>
+    <a href="https://instagram.com/Mehefir" target="_blank" class="instagram-item">
+      <img src="insta4.jpg" alt="Instagram post" onerror="this.outerHTML='<div class=ph-insta></div>'">
+      <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div>
+    </a>
+  </div>
+
+  <a href="https://instagram.com/Mehefir" target="_blank" class="btn-instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    View Full Profile
+  </a>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials-section">
+  <span class="section-label">Kind Words</span>
+  <h2 class="section-title">Happy Clients</h2>
+
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p>"Amazing design! Loved it 😍 She made my bridal mehendi look absolutely stunning. Every guest was complimenting it."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">P</div>
+        <div>
+          <div class="author-name">Priya S.</div>
+          <div class="author-event">Bridal Mehendi</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p>"The most intricate and beautiful work I have ever seen. So patient, so talented. Will book again for every occasion!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">F</div>
+        <div>
+          <div class="author-name">Fatima R.</div>
+          <div class="author-event">Engagement Ceremony</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p>"Exceeded all my expectations. The stain was so dark and lasted over two weeks. Truly a gifted artist — highly recommend!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">A</div>
+        <div>
+          <div class="author-name">Ayesha K.</div>
+          <div class="author-event">Wedding Party</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Mehefir Art</div>
+  <ul class="footer-links">
+    <li><a href="#gallery">The Art</a></li>
+    <li><a href="#about">The Artist</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Mehefir Art</div>
+</footer>
+
+<script>
+const WA = '9963152996'; // ← Replace with your WhatsApp number
+
+function order(item) {
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent('Hi! I would like to order: ' + item)}`, '_blank');
+}
+
+function sendMsg() {
+  const name     = document.getElementById('c-name').value.trim();
+  const phone    = document.getElementById('c-phone').value.trim();
+  const occasion = document.getElementById('c-occasion').value;
+  const location = document.getElementById('c-location').value.trim();
+  const msg      = document.getElementById('c-msg').value.trim();
+  if (!name || !msg) { alert('Please fill in your name and message.'); return; }
+  const text = `*New Enquiry – Mehefir Art*\n\n*Name:* ${name}\n*Phone:* ${phone||'—'}\n*Occasion:* ${occasion||'—'}\n*Location:* ${location||'—'}\n\n*Message:*\n${msg}`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+function toggleFaq(btn) {
+  const item   = btn.parentElement;
+  const answer = item.querySelector('.faq-answer');
+  const open   = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => {
+    el.classList.remove('open');
+    el.querySelector('.faq-answer').style.maxHeight = '0';
+  });
+  if (!open) { item.classList.add('open'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
+}
+
+// Sticky nav
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', scrollY > 60);
+});
+
+// Mobile menu
+function toggleMenu() {
+  const ul  = document.querySelector('.nav-links');
+  const cta = document.querySelector('.nav-cta');
+  const vis = ul.style.display === 'flex';
+  ul.style.cssText  = vis ? '' : 'display:flex;flex-direction:column;position:fixed;top:62px;left:0;right:0;background:var(--cream);padding:28px 24px;gap:22px;border-bottom:1px solid var(--border);z-index:99';
+  cta.style.display = vis ? '' : 'none';
+}
+</script>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919963152996" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+</a>
+
+</body>
+</html>

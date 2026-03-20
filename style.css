@@ -1,0 +1,134 @@
+/* ── ROOT VARIABLES ── */
+:root {
+  --cream: #faf6f1;
+  --warm-white: #fdfbf8;
+  --sand: #e8ddd0;
+  --terracotta: #b5714a;
+  --deep-brown: #3a1f0d;
+  --mid-brown: #7a4928;
+  --text: #2c1a0e;
+  --text-light: #7a6458;
+  --border: #ddd3c5;
+}
+
+/* ── BASE ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  font-weight: 300;
+}
+
+/* ── HEADER ── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 48px;
+  background: rgba(250, 246, 241, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, padding 0.3s;
+  color: var(--deep-brown);
+  text-align: left;
+}
+
+header.scrolled {
+  border-bottom-color: var(--border);
+  padding: 16px 48px;
+}
+
+/* ── SECTION ── */
+.section {
+  padding: 100px 64px;
+  text-align: center;
+}
+
+/* ── PRODUCT CARD ── */
+.product {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 40px 36px;
+  margin: 8px;
+  border-radius: 0;
+  text-align: left;
+  transition: background 0.3s;
+  display: inline-block;
+}
+
+.product:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.product h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+.product p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+/* ── BUTTON ── */
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--cream);
+  padding: 12px 24px;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s;
+  border-radius: 0;
+}
+
+button:hover {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  header {
+    padding: 18px 24px;
+  }
+
+  header.scrolled {
+    padding: 14px 24px;
+  }
+
+  .section {
+    padding: 72px 24px;
+  }
+
+  .product {
+    display: block;
+    margin: 10px 0;
+    padding: 28px 24px;
+  }
+}
