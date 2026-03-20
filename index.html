@@ -3,10 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mehefir Art</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
 
+<!-- ══ BASIC SEO ══ -->
+<title>Mehefir | Bridal Mehendi Artist in Nellore | Henna Services</title>
+<meta name="description" content="Mehefir - Professional bridal mehendi artist in Nellore. Book stunning henna designs for weddings, parties & events. WhatsApp now!">
+<meta name="keywords" content="Mehefir, Mehendi artist Nellore, Bridal Mehendi, Henna designs, Mehendi near me, bridal henna Nellore, wedding mehendi Andhra Pradesh">
+<meta name="author" content="Mehefir Art">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mehefir.netlify.app">
+
+<!-- ══ OPEN GRAPH (WhatsApp / Instagram / Social Sharing) ══ -->
+<meta property="og:title" content="Mehefir | Bridal Mehendi Artist in Nellore">
+<meta property="og:description" content="Book professional bridal mehendi services in Nellore. Stunning henna designs for weddings, engagements & events.">
+<meta property="og:image" content="https://mehefir.netlify.app/logo.png">
+<meta property="og:url" content="https://mehefir.netlify.app">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_IN">
+<meta property="og:site_name" content="Mehefir Art">
+
+<!-- ══ TWITTER CARD ══ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mehefir | Bridal Mehendi Artist in Nellore">
+<meta name="twitter:description" content="Professional bridal mehendi services in Nellore. Book now via WhatsApp!">
+<meta name="twitter:image" content="https://mehefir.netlify.app/logo.png">
+
+<!-- ══ FAVICON ══ -->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="favicon.ico">
+
+<!-- ══ STRUCTURED DATA — LocalBusiness / BeautySalon ══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "Mehefir Mehendi Artist",
+  "image": "https://mehefir.netlify.app/logo.png",
+  "url": "https://mehefir.netlify.app",
+  "telephone": "+919963152996",
+  "priceRange": "₹₹",
+  "description": "Professional bridal mehendi artist in Nellore offering henna services for weddings, engagements, baby showers and parties.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Nellore",
+    "addressRegion": "Andhra Pradesh",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "14.4426",
+    "longitude": "79.9865"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "09:00",
+    "closes": "20:00"
+  },
+  "sameAs": [
+    "https://instagram.com/__mehefir__"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Mehendi Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Bridal Mehendi",
+          "description": "Full bridal application for hands and feet"
+        },
+        "price": "2500",
+        "priceCurrency": "INR"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Party Mehendi Package",
+          "description": "Group mehendi for functions and gatherings"
+        },
+        "price": "800",
+        "priceCurrency": "INR"
+      }
+    ]
+  }
+}
+</script>
+
+<!-- ══ FONTS ══ -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
 /* ── VARIABLES ── */
 :root {
   --cream: #faf6f1;
@@ -130,6 +218,19 @@ nav.scrolled { border-bottom-color: var(--border); padding: 14px 48px; }
 }
 
 /* ══════════════════════════════
+   SEO HERO TEXT (visually hidden but crawlable)
+══════════════════════════════ */
+.seo-hero-text {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+}
+
+/* ══════════════════════════════
    HERO
 ══════════════════════════════ */
 .hero {
@@ -163,9 +264,29 @@ nav.scrolled { border-bottom-color: var(--border); padding: 14px 48px; }
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+.hero-content h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 300; font-style: italic;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  letter-spacing: 0.01em;
+}
 .hero-content p {
   font-size: 11px; font-weight: 400; letter-spacing: 0.22em;
   text-transform: uppercase; color: rgba(255,255,255,0.65);
+}
+.hero-tagline {
+  font-family: 'Jost', sans-serif;
+  font-size: 13px !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: none !important;
+  color: rgba(255,255,255,0.7) !important;
+  max-width: 520px;
+  line-height: 1.7 !important;
+  margin-top: 10px;
 }
 .hero-scroll {
   position: absolute; bottom: 36px; right: 64px; z-index: 2;
@@ -196,6 +317,31 @@ nav.scrolled { border-bottom-color: var(--border); padding: 14px 48px; }
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(28px, 4vw, 54px); font-weight: 300; font-style: italic;
   color: var(--deep-brown); line-height: 1.2;
+}
+
+/* ══════════════════════════════
+   SEO INTRO STRIP
+══════════════════════════════ */
+.seo-intro-strip {
+  background: var(--warm-white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 64px;
+  text-align: center;
+}
+.seo-intro-strip h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 400; font-style: italic;
+  color: var(--deep-brown);
+  margin-bottom: 12px;
+}
+.seo-intro-strip p {
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.85;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 /* ══════════════════════════════
@@ -504,122 +650,108 @@ footer {
    TABLET  ≤ 900px
 ══════════════════════════════ */
 @media (max-width: 900px) {
-  /* Nav */
   nav { padding: 18px 24px; }
   nav.scrolled { padding: 14px 24px; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
 
-  /* Hero */
   .hero-content { padding: 0 24px 56px; }
   .hero-scroll { right: 24px; }
 
-  /* Sections */
   .section { padding: 72px 32px; }
 
-  /* Gallery */
   .gallery-section { padding: 72px 0; }
   .gallery-header { padding: 0 32px; margin-bottom: 36px; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 
-  /* About */
   .about-wrap { grid-template-columns: 1fr; gap: 40px; }
   .about-img::before { display: none; }
 
-  /* Products */
   .products-section { padding: 72px 32px; }
   .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 
-  /* Contact */
   .contact-section { grid-template-columns: 1fr; }
   .contact-img { min-height: 280px; }
   .contact-form-wrap { padding: 60px 40px; }
 
-  /* Instagram */
   .instagram-section { padding: 72px 32px; }
   .instagram-grid { grid-template-columns: repeat(2, 1fr); }
 
-  /* Testimonials */
   .testimonials-section { padding: 72px 32px; }
   .testimonials-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
 
-  /* Footer */
   footer { padding: 40px 32px; justify-content: center; text-align: center; }
   .footer-links { justify-content: center; }
+
+  .seo-intro-strip { padding: 32px 32px; }
 }
 
 /* ══════════════════════════════
    MOBILE  ≤ 600px
 ══════════════════════════════ */
 @media (max-width: 600px) {
-  /* Nav */
   nav { padding: 16px 20px; }
   nav.scrolled { padding: 14px 20px; }
   .nav-logo { font-size: 17px; }
 
-  /* Hero */
   .hero { height: 100svh; }
   .hero-content { padding: 0 20px 44px; }
+  .hero-content h1 { font-size: clamp(28px, 8vw, 42px); }
   .hero-content p { font-size: 10px; letter-spacing: 0.16em; }
+  .hero-tagline { font-size: 12px !important; }
   .hero-scroll { display: none; }
 
-  /* Sections */
   .section { padding: 60px 20px; }
   .section-title { font-size: clamp(24px, 7vw, 34px); }
   .section-label { font-size: 9px; }
 
-  /* Gallery */
   .gallery-section { padding: 56px 0; }
   .gallery-header { padding: 0 20px; margin-bottom: 28px; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; }
 
-  /* About */
   .about-wrap { gap: 28px; }
   .about-text blockquote { font-size: 17px; padding-left: 14px; margin: 20px 0; }
   .about-text p { font-size: 14px; }
   .about-sig { font-size: 22px; }
 
-  /* Products */
   .products-section { padding: 56px 20px; }
   .products-grid { grid-template-columns: 1fr; gap: 10px; }
   .product-card { padding: 28px 20px; }
   .product-card h3 { font-size: 22px; }
   .product-card .desc { font-size: 13px; }
 
-  /* FAQ */
   .faq-question { font-size: 13px; padding: 18px 0; }
   .faq-answer p { font-size: 13px; }
   .faq-icon { width: 20px; height: 20px; font-size: 14px; }
 
-  /* Contact */
   .contact-img { min-height: 220px; }
   .contact-form-wrap { padding: 48px 20px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .form-group input,
   .form-group textarea,
-  .form-group select { font-size: 16px; /* prevents iOS zoom */ }
+  .form-group select { font-size: 16px; }
 
-  /* Instagram */
   .instagram-section { padding: 56px 20px; }
   .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; max-width: 100%; }
   .btn-instagram { width: 100%; justify-content: center; }
   .instagram-handle { margin-bottom: 28px; }
 
-  /* Testimonials */
   .testimonials-section { padding: 56px 20px; }
   .testimonials-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
   .testimonial-card { padding: 28px 20px; }
   .testimonial-card p { font-size: 14px; }
 
-  /* WhatsApp float */
   .whatsapp-float { bottom: 20px; right: 16px; width: 50px; height: 50px; }
   .whatsapp-float svg { width: 24px; }
 
-  /* Footer */
   footer { padding: 36px 20px; gap: 16px; }
   .footer-logo { font-size: 16px; }
   .footer-links { gap: 14px; }
   .footer-copy { font-size: 10px; width: 100%; text-align: center; }
+
+  .seo-intro-strip { padding: 28px 20px; }
+  .seo-intro-strip h2 { font-size: 20px; }
+  .seo-intro-strip p { font-size: 14px; }
 }
 
 /* ══════════════════════════════
@@ -631,12 +763,11 @@ footer {
   .instagram-grid { grid-template-columns: 1fr 1fr; }
   .products-grid { grid-template-columns: 1fr; }
 }
-
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══ NAV ══ -->
 <nav id="mainNav">
   <a href="#" class="nav-logo">_mehefir_ Art</a>
   <ul class="nav-links">
@@ -651,7 +782,7 @@ footer {
   </button>
 </nav>
 
-<!-- MOBILE MENU DRAWER -->
+<!-- ══ MOBILE MENU DRAWER ══ -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#gallery"     onclick="closeMenu()">The Art</a>
   <a href="#about"       onclick="closeMenu()">The Artist</a>
@@ -660,37 +791,46 @@ footer {
   <a href="#contact"     onclick="closeMenu()" class="mobile-cta">Get in Touch</a>
 </div>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero-image"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
+    <!-- H1 is visible and crawlable — styled to look like part of the hero -->
+    <h1>Mehefir — Bridal Mehendi Artist in Nellore</h1>
     <p>Mehendi · Art · Tradition</p>
+    <p class="hero-tagline">Professional henna services for weddings, engagements & special events across Nellore and Andhra Pradesh.</p>
   </div>
   <div class="hero-scroll">Scroll</div>
 </section>
 
-<!-- GALLERY -->
+<!-- ══ SEO INTRO STRIP ══ -->
+<div class="seo-intro-strip">
+  <h2>Mehefir – Bridal Mehendi Artist in Nellore</h2>
+  <p>Mehefir offers professional mehendi services for weddings, engagements, and special events in Nellore, Andhra Pradesh. We specialise in bridal mehendi, Arabic designs, and modern henna styles — each pattern crafted with care, tradition, and a personal touch.</p>
+</div>
+
+<!-- ══ GALLERY ══ -->
 <section id="gallery" class="gallery-section">
   <div class="gallery-header">
     <span class="section-label">Portfolio</span>
     <h2 class="section-title">The Art</h2>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item"><img src="mehendi1.jpg" alt="Mehendi 1" onerror="this.outerHTML='<div class=ph></div>'"></div>
-    <div class="gallery-item"><img src="mehendi2.jpg" alt="Mehendi 2" onerror="this.outerHTML='<div class=ph></div>'"></div>
-    <div class="gallery-item"><img src="mehendi3.jpg" alt="Mehendi 3" onerror="this.outerHTML='<div class=ph></div>'"></div>
-    <div class="gallery-item"><img src="mehendi4.jpg" alt="Mehendi 4" onerror="this.outerHTML='<div class=ph></div>'"></div>
-    <div class="gallery-item"><img src="mehendi5.jpg" alt="Mehendi 5" onerror="this.outerHTML='<div class=ph></div>'"></div>
-    <div class="gallery-item"><img src="mehendi6.jpg" alt="Mehendi 6" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi1.jpg" alt="Bridal Mehendi design by Mehefir, Nellore" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi2.jpg" alt="Arabic henna pattern by Mehefir" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi3.jpg" alt="Intricate mehendi design for wedding" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi4.jpg" alt="Traditional bridal henna by Mehefir artist" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi5.jpg" alt="Modern mehendi design for engagement ceremony" onerror="this.outerHTML='<div class=ph></div>'"></div>
+    <div class="gallery-item"><img src="mehendi6.jpg" alt="Full hand mehendi design Nellore" onerror="this.outerHTML='<div class=ph></div>'"></div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ══ ABOUT ══ -->
 <section id="about" class="section">
   <div class="about-wrap">
     <div class="about-img">
-      <img src="artist.jpg" alt="The Artist" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <img src="artist.jpg" alt="Mehefir – Professional Mehendi Artist in Nellore" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="ph-about" style="display:none"></div>
     </div>
     <div class="about-text">
@@ -705,7 +845,7 @@ footer {
   </div>
 </section>
 
-<!-- PRODUCTS -->
+<!-- ══ PRODUCTS ══ -->
 <section id="products" class="products-section">
   <span class="section-label">Shop</span>
   <h2 class="section-title" style="color:var(--cream)">Products &amp; Services</h2>
@@ -750,7 +890,7 @@ footer {
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- ══ FAQ ══ -->
 <section id="faq" class="section">
   <div class="faq-inner">
     <span class="section-label">Questions</span>
@@ -766,8 +906,8 @@ footer {
         <div class="faq-answer"><p>We use 100% natural, organic henna powder mixed with high-quality essential oils such as eucalyptus or lavender. Our paste is completely free from harmful chemicals or PPD. Your skin's safety is our top priority.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Do you do bridal mehendi?<span class="faq-icon">+</span></button>
-        <div class="faq-answer"><p>Yes — bridal mehendi is our speciality! A full application covering hands, arms, and feet takes 3–6 hours. We recommend scheduling 2–3 days before your ceremony so the stain reaches its richest colour by your big day.</p></div>
+        <button class="faq-question" onclick="toggleFaq(this)">Do you do bridal mehendi in Nellore?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Yes — bridal mehendi is our speciality! We serve brides across Nellore and surrounding areas in Andhra Pradesh. A full application covering hands, arms, and feet takes 3–6 hours. We recommend scheduling 2–3 days before your ceremony so the stain reaches its richest colour by your big day.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">Can I customise my design?<span class="faq-icon">+</span></button>
@@ -785,10 +925,10 @@ footer {
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ══ CONTACT ══ -->
 <section id="contact" class="contact-section">
   <div class="contact-img">
-    <img src="mehendi3.jpg" alt="Mehendi Art" onerror="this.style.display='none'">
+    <img src="mehendi3.jpg" alt="Beautiful mehendi design by Mehefir artist Nellore" onerror="this.style.display='none'">
     <div class="ph-contact"></div>
   </div>
   <div class="contact-form-wrap">
@@ -831,39 +971,39 @@ footer {
   </div>
 </section>
 
-<!-- INSTAGRAM -->
+<!-- ══ INSTAGRAM ══ -->
 <section id="instagram" class="instagram-section">
   <span class="section-label">Stay Connected</span>
   <h2 class="section-title">Follow us on Instagram</h2>
-  <a href="https://instagram.com/__mehefir__" target="_blank" class="instagram-handle">
+  <a href="https://instagram.com/__mehefir__" target="_blank" rel="noopener" class="instagram-handle">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
     @__mehefir__
   </a>
   <div class="instagram-grid">
-    <a href="https://instagram.com/__mehefir__" target="_blank" class="instagram-item">
-      <img src="insta1.jpg" alt="https://www.instagram.com/p/C-z4B5APE1n/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" onerror="this.outerHTML='<div class=ph-insta></div>'">
+    <a href="https://instagram.com/__mehefir__" target="_blank" rel="noopener" class="instagram-item">
+      <img src="insta1.jpg" alt="Mehefir mehendi Instagram post 1" onerror="this.outerHTML='<div class=ph-insta></div>'">
       <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div>
     </a>
-    <a href="https://instagram.com/_mehefir_" target="_blank" class="instagram-item">
-      <img src="insta2.jpg" alt="Post 2" onerror="this.outerHTML='<div class=ph-insta></div>'">
+    <a href="https://instagram.com/__mehefir__" target="_blank" rel="noopener" class="instagram-item">
+      <img src="insta2.jpg" alt="Mehefir mehendi Instagram post 2" onerror="this.outerHTML='<div class=ph-insta></div>'">
       <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div>
     </a>
-    <a href="https://instagram.com/_mehefir_" target="_blank" class="instagram-item">
-      <img src="insta3.jpg" alt="Post 3" onerror="this.outerHTML='<div class=ph-insta></div>'">
+    <a href="https://instagram.com/__mehefir__" target="_blank" rel="noopener" class="instagram-item">
+      <img src="insta3.jpg" alt="Mehefir mehendi Instagram post 3" onerror="this.outerHTML='<div class=ph-insta></div>'">
       <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div>
     </a>
-    <a href="https://instagram.com/_mehefir_" target="_blank" class="instagram-item">
-      <img src="insta4.jpg" alt="Post 4" onerror="this.outerHTML='<div class=ph-insta></div>'">
+    <a href="https://instagram.com/__mehefir__" target="_blank" rel="noopener" class="instagram-item">
+      <img src="insta4.jpg" alt="Mehefir mehendi Instagram post 4" onerror="this.outerHTML='<div class=ph-insta></div>'">
       <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div>
     </a>
   </div>
-  <a href="https://instagram.com/_mehefir_" target="_blank" class="btn-instagram">
+  <a href="https://instagram.com/__mehefir__" target="_blank" rel="noopener" class="btn-instagram">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
     View Full Profile
   </a>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- ══ TESTIMONIALS ══ -->
 <section id="testimonials" class="testimonials-section">
   <span class="section-label">Kind Words</span>
   <h2 class="section-title">Happy Clients</h2>
@@ -895,7 +1035,7 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-logo">Mehefir Art</div>
   <ul class="footer-links">
@@ -905,11 +1045,11 @@ footer {
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="footer-copy">© 2025 Mehefir Art</div>
+  <div class="footer-copy">© 2025 Mehefir Art · Nellore, Andhra Pradesh</div>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/919963152996" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+<!-- ══ WHATSAPP FLOAT ══ -->
+<a href="https://wa.me/919963152996" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp with Mehefir Mehendi Artist Nellore">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.559 4.117 1.532 5.852L.057 23.057a.75.75 0 00.916.916l5.205-1.475A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
 </a>
 
